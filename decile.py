@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+
+
 def decile(score,resp,buckets=10):
 
         """Takes as input score and binary response and outputs an aggregate dataframe grouped by decile

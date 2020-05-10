@@ -1,3 +1,9 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
 def target_analysis(df,target,var,xlim=[0,1000],n=50):
 
    

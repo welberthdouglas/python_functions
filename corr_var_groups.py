@@ -1,3 +1,5 @@
+import numpy as np
+
 def corr_var_groups(df,corr_tresh):
     """creates a list of lists with groups of variables that have a pearson correlation 
     bigger than corr_tresh among each other"""
