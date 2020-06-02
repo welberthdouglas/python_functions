@@ -29,6 +29,7 @@ def decile(score,resp,buckets=10):
         agg['n_'+ str(df0.columns[0])] = df.sum().neg_resp
         agg['total'] = (agg[df0.columns[0]] + agg['n_'+ str(df0.columns[0])])
         agg[str(df0.columns[0]) + '_ratio'] = (agg[df0.columns[0]] / agg.total).apply('{0:.1%}'.format)
+        agg['mean_score'] = df.mean().score.apply('{0:.3f}'.format)
 
         agg = (agg.sort_values(by = 'max_' + str(df0.columns[1]), ascending = False)).reset_index(drop = True)
         
