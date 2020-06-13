@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np 
+
 def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0.1):
     """ reduces memory usage of a pandas dataframe"""
     
