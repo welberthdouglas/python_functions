@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np 
 
-def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0.1):
+def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0.1, obj2cat = True):
     """ reduces memory usage of a pandas dataframe"""
     
     m_b = df.memory_usage(deep = True).sum() / 1024**2
@@ -23,8 +23,9 @@ def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0
         if col not in datetime_features:
             num_unique_values = len(df[col].unique())
             num_total_values = len(df[col])
-            if float(num_unique_values) / num_total_values  < threshold:
-                df[col] = df[col].astype('category')
+            if obj2cat:
+                if float(num_unique_values) / num_total_values  < threshold:
+                    df[col] = df[col].astype('category')
         else:
             df[col] = pd.to_datetime(df[col])
         
