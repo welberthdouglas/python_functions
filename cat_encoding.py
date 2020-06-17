@@ -1,3 +1,5 @@
+import pandas as pd
+
 def cat_encoding(df, cat_vars:str, encoding:str = 'label'):
     """Encodes cathegorical variables of a dataframe
     
