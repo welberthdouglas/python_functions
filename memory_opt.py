@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np 
 
-def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0.1, obj2cat = True):
+def memory_opt(df:pd.DataFrame, datetime_features:list = [], threshold:float = 0.1, obj2cat:bool = True):
     """ reduces memory usage of a pandas dataframe"""
     
     m_b = df.memory_usage(deep = True).sum() / 1024**2

@@ -1,4 +1,6 @@
-def calculate_pvalues(df,method:str):
+import pandas as pd
+
+def calculate_pvalues(df:pd.DataFrame,method:str) -> pd.DataFrame:
     df = df.dropna()._get_numeric_data()
     dfcols = pd.DataFrame(columns=df.columns)
     pvalues = dfcols.transpose().join(dfcols, how='outer')
