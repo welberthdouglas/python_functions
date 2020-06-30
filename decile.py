@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-def decile(score:str,resp:str,buckets:int=10) -> pd.DataFrame:
+def decile(score:pd.Series,resp:pd.Series,buckets:int=10) -> pd.DataFrame:
 
         """Takes as input score and binary response and outputs an aggregate dataframe grouped by decile
         with columns for gain, lift and KS
