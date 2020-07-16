@@ -16,3 +16,15 @@ def corrGroups(df:pd.DataFrame,corr_tresh:float=0.9) -> list:
             tresh_corr.append(col)
             result.append(tresh_corr)
     return result
+
+
+
+WIP:
+
+corr_tresh=0.7
+    
+
+corrMatrix = df.corr().abs()
+corrMatrix.loc[:,:] =  np.tril(corrMatrix, k=-1)
+corrMatrix = corrMatrix[corrMatrix > corr_tresh].dropna(how='all').dropna(axis=1,how='all')
+corrMatrix['corr_groups'] = corrMatrix.apply(lambda x:sum([[x.name],x.index[x.notna()].tolist()],[]), axis=1)
