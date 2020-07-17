@@ -1,12 +1,21 @@
 import numpy as np
 
-def corrGroups(df:pd.DataFrame,corr_tresh:float=0.9) -> list:
+def corrGroups(df:pd.DataFrame,corr_thresh:float=0.9) -> list:
     """creates a list of lists with groups of variables that have a pearson correlation 
-    bigger than corr_tresh among each other"""
+    bigger than corr_tresh among each other
+    
+    Args:
+    df: Input DataFrame
+    corr_tresh: correlation threshold to consider for groups (defaul =0.9)
+
+    Return:
+    corrVars: List of lists with the correlation groups ordered by max correlation within the group
+
+    """
     
     corrMatrix = df.corr().abs()
     corrMatrix.loc[:,:] =  np.tril(corrMatrix, k=-1)
-    corrMatrix = corrMatrix[corrMatrix > corr_tresh].dropna(how='all').dropna(axis=1,how='all')
+    corrMatrix = corrMatrix[corrMatrix >= corr_thresh].dropna(how='all').dropna(axis=1,how='all')
     corrMatrix['corr_groups'] = corrMatrix.apply(lambda x:sum([[x.name],x.index[x.notna()].tolist()],[]), axis=1)
     corrMatrix['max'] = corrMatrix.max(axis=1)
     
